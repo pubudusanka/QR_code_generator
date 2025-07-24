@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/pubudusanka/QR_code_generator#readme",
   "dependencies": {
-    "inquirer": "^12.8.2"
+    "inquirer": "^12.8.2",
+    "qr-image": "^3.2.0"
   }
 }
