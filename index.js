@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import qr from "qr-image";
-import fs from "fs";
+import fs, { writeFile } from "fs";
 
 
 inquirer
@@ -16,6 +16,15 @@ inquirer
         const url = answers.message;
         var qr_svg = qr.image(url);
         qr_svg.pipe(fs.createWriteStream('qr-image.png'));
+
+        fs.writeFile('message.txt', url, (err) => {
+            if (err) {
+                console.error("Error writing to file:", err);
+            } else {
+                console.log("Message saved to message.txt");
+            }
+        });
+        console.log("QR code generated and saved as qr-image.png");
     })
     .catch((error) => {
         if (error.isTtyError) {
